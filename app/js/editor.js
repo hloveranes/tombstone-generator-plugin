@@ -4,7 +4,7 @@ function edit(elm) {
   console.log(elm.target);
 }
 
-getCurrentInput(document.querySelectorAll("div #ts-style li input"));
+// getCurrentInput(document.querySelectorAll("div #ts-style li input"));
 
 function getCurrentInput(elInpts) {
   //   var currentInput = document.querySelectorAll("div #ts-style");

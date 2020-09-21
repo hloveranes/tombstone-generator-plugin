@@ -1,4 +1,4 @@
-// Get all draggable Html Elements
+// initialized all draggable elements
 dragAllElement(document.querySelectorAll(".ddable"));
 
 function dragAllElement(elmnts) {
