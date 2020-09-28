@@ -1,11 +1,11 @@
 <?php
 /**
 * Plugin Name: Tombstone Generator
-* Plugin URI: https://github.com/devy-lis/Tombstone-Generator
+* Plugin URI: https://github.com/1000th-devy/Tombstone-Generator
 * Description: Create a wonderful tombstone with Tombstone Generator
 * Version: 1.1.2
-* Author: devy-lis
-* Author URI: https://github.com/devy-lis
+* Author: 1000th-devy
+* Author URI: https://github.com/1000th-devy
 * License: GPLv2 or later
 * Text Domain: tombstone-generator
 * 
@@ -27,7 +27,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-Copyright 2005-2015 devy-lis.
+Copyright 2005-2015 1000th-devy.
 */
 
 if ( ! defined( 'ABSPATH' )){
