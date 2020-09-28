@@ -13,7 +13,7 @@
       <div id="ts-cmpnts" class="tabcontent">
           <div id="text-list">
             <span onclick="getCanvasEl(this)" style="cursor: pointer">Hello RWorld</span>
-            <img onclick="getCanvasEl(this)" src="<?php echo plugins_url().'/tombstone-generator/app/imgs/bird-1.jpg';?>"
+            <img onclick="getCanvasEl(this)" src="<?php echo plugin_dir_url(__FILE__).'imgs/bird-1.jpg';?>"
               style="cursor: pointer"/>
           </div>
           <button id="createEl">Add</button>
@@ -53,7 +53,7 @@
         <span class="ddable" draggable="true">Hello RWorld</span>
         <img
           class="ddable" draggable="true"
-          src="<?php echo plugins_url().'/tombstone-generator/app/imgs/bird-2.jpg';?>"
+          src="<?php echo plugin_dir_url(__FILE__).'imgs/bird-2.jpg';?>"
           style="width: 100px; height: 100px"/>
       </div>
       
