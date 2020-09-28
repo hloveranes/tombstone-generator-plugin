@@ -12,9 +12,9 @@
 
       <div id="ts-cmpnts" class="tabcontent">
           <div id="text-list">
-            <span onclick="getCanvasEl(this)" style="color: black">Hello RWorld</span>
+            <span onclick="getCanvasEl(this)" style="cursor: pointer">Hello RWorld</span>
             <img onclick="getCanvasEl(this)" src="<?php echo plugins_url().'/tombstone-generator/app/imgs/bird-1.jpg';?>"
-              alt="bird" style="width: 100px; height: 100px; cursor: pointer"/>
+              style="cursor: pointer"/>
           </div>
           <button id="createEl">Add</button>
       </div>
@@ -54,7 +54,7 @@
         <img
           class="ddable" draggable="true"
           src="<?php echo plugins_url().'/tombstone-generator/app/imgs/bird-2.jpg';?>"
-          alt="bird" style="width: 100px; height: 100px"/>
+          style="width: 100px; height: 100px"/>
       </div>
       
       <a id="download-link" download="tombstone.png"></a>
@@ -99,6 +99,7 @@ var selCanvasEl = null;
         // create a copy of the selected element
         var newEl = selCanvasEl.cloneNode(true);
           // configure the created element
+          newEl.removeAttribute('style');
           newEl.removeAttribute('onclick');
           newEl.classList.add('ddable');
           newEl.setAttribute('draggable', true)

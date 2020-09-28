@@ -2,6 +2,7 @@
 
 function edit(elm) {
   console.log(elm.target);
+  // console.log(this);
 }
 
 // getCurrentInput(document.querySelectorAll("div #ts-style li input"));
