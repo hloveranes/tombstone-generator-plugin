@@ -1,127 +1,93 @@
+<div>
+  <!-- Body -->
+  <div id="canvas-parent">
+    <div id="cptr-contr">
+      <button id="cptr">Capture Canvas</button>
+    </div>
 
-<!-- Grid Container -->
-<div class="ts-grid-container">
 
-  <!-- Body Area -->
-  <div class="ts-child-grid-container">
-    <!-- Editor -->
-    <div>
-      <button class="tablink" onclick="openPage('ts-cmpnts', this, 'yellowgreen')">Comps</button>
-      <button class="tablink" onclick="openPage('ts-styles', this, 'lightgreen')" id="defaultOpen">Styles</button>
-      <button class="tablink" onclick="openPage('ts-advance', this, 'lightblue')">Advanced</button>
+      <div id="tmplt-limit">
+        <!-- element id must not be changed-->
+        <div id="ts-canvas-tmplt">
+        
+          <span class="ddable" draggable="true">Hello RWorld</span>
+          <img
+            class="ddable" draggable="true"
+            src="<?php echo plugin_dir_url(__FILE__).'imgs/bird-2.jpg';?>"
+            style="width: 100px; height: 100px"/>
 
-      <div id="ts-cmpnts" class="tabcontent">
-          <div id="text-list">
-            <span onclick="getCanvasEl(this)" style="cursor: pointer">Hello RWorld</span>
-            <img onclick="getCanvasEl(this)" src="<?php echo plugin_dir_url(__FILE__).'imgs/bird-1.jpg';?>"
-              style="cursor: pointer"/>
+        </div>
+        
+        <a id="download-link" download="tombstone.png"></a>
+      </div>
+      
+
+      <!-- Components and Settings -->
+      <div id="tmplt-cmpnts">
+          <div>
+            
+              <div id="ts-cmpnts">
+
+                <h2>Choose Background</h2>
+                <div class="cmpnts">
+                  <?php
+                    // will be used when images is saved in the database
+                    $templ_background = array('imgs/bg-0.jpeg','imgs/bg-1.jpeg','imgs/bg-2.jpeg','imgs/bg-3.jpeg','imgs/bg-4.jpeg');
+
+                    $bg_cnt = 0;
+                    foreach($templ_background as $t_bg){
+                 
+                        echo '<div>
+                                <img id="bg-tmplt-'.$bg_cnt.'" class="tmplt" src="'.plugin_dir_url(__FILE__).$t_bg.'" style="cursor: pointer"/>
+                              </div>';
+                      $bg_cnt++;
+                    }
+                  ?>
+                </div>
+
+
+                <h2>Select Design</h2>
+                <div class="cmpnts">
+                  <?php
+                    // will be used when images is saved in the database
+                    $temp_design = array('imgs/bg-0.jpeg','imgs/bg-1.jpeg','imgs/bg-2.jpeg','imgs/bg-3.jpeg','imgs/bg-4.jpeg');
+
+                    $design_cnt = 0;
+                    foreach($temp_design as $t_dn){
+
+                        echo '<div>
+                                <img id="tmplt-'.$design_cnt.'" src="'.plugin_dir_url(__FILE__).$t_dn.'" style="cursor: pointer"/>
+                              </div>';
+                      $design_cnt++;
+                    }
+                  ?>
+                </div>
+
+
+                <h2>Insert Text</h2>
+                <div class="cmpnts">
+                    <div>
+                      <span onclick="getCanvasEl(this)" style="cursor: pointer">Sample Text</span>
+                    </div>
+                    <div>
+                      <span onclick="getCanvasEl(this)" style="cursor: pointer">Sample Text</span>
+                    </div>
+                    <div>
+                      <span onclick="getCanvasEl(this)" style="cursor: pointer">Sample Text</span>
+                    </div>
+                    <div>
+                      <span onclick="getCanvasEl(this)" style="cursor: pointer">Sample Text</span>
+                    </div>
+                </div>
+
+                <div id="add-elm">
+                  <button id="createEl">Add</button>
+                </div>
+              </div>
+
           </div>
-          <button id="createEl">Add</button>
       </div>
 
-      <div id="ts-styles" class="tabcontent">
-        <h3>Styles</h3> 
-          <ul id="ts-style">
-            <li>
-              <label for="ts-inpt-El-1">Text 1</label
-              ><input id="ts-inpt-El-1" type="text" placeholder="value 1"/>
-            </li>
-            <li>
-              <label for="ts-inpt-El-2">Text 2</label
-              ><input id="ts-inpt-El-2" type="text" placeholder="value 2"/>
-            </li>
-            <li>
-              <label for="ts-inpt-El-3">Text 3</label
-              ><input id="ts-inpt-El-3" type="text" placeholder="value 3"/>
-            </li>
-              <button id="ts-capture">Capture Canvas</button>
-            </li>
-          </ul>
-      </div>
-
-      <div id="ts-advance" class="tabcontent">
-        <h3>Advanced</h3>
-        <p>Get in touch, or swing by for a cup of coffee.</p>
-      </div>
-    </div>
-    <!-- End Of Editor -->
-
-    <!-- Body -->
-    <div class="ts-template">
-      <div id="ts-stone" class="ts-template-child" style="padding: 0.1px">
-      
-        <span class="ddable" draggable="true">Hello RWorld</span>
-        <img
-          class="ddable" draggable="true"
-          src="<?php echo plugin_dir_url(__FILE__).'imgs/bird-2.jpg';?>"
-          style="width: 100px; height: 100px"/>
-      </div>
-      
-      <a id="download-link" download="tombstone.png"></a>
-    </div>
-    <!-- End Of Body  -->
+    <!-- End of Components and Settigns -->
   </div>
-  <!-- End Of Body Area -->
-
-<!-- End Of Grid Container -->
-
-<script>
-    function openPage(pageName,elmnt,color) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablink");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].style.backgroundColor = "";
-      }
-      document.getElementById(pageName).style.display = "block";
-      elmnt.style.backgroundColor = color;
-    }
-
-  // Get the element with id="defaultOpen" and click on it
-  document.getElementById("defaultOpen").click();
-
-
-// set global variable for passing data
-var selCanvasEl = null;
-
-    function getCanvasEl(canvasEl){
-      // canvasEl.classList.add('is-selected');
-
-      // get the selected element
-      selCanvasEl = canvasEl;
-    }
-
-    document.getElementById('createEl').addEventListener('click', () => {
-      if(selCanvasEl != null){
-        // create a copy of the selected element
-        var newEl = selCanvasEl.cloneNode(true);
-          // configure the created element
-          newEl.removeAttribute('style');
-          newEl.removeAttribute('onclick');
-          newEl.classList.add('ddable');
-          newEl.setAttribute('draggable', true)
-        // add the element to canvas
-        document.getElementById('ts-stone').appendChild(newEl);
-        // re-initialized the list of draggable elements
-        dragAllElement(document.querySelectorAll(".ddable"));
-      }
-      // reset selected elements
-      selCanvasEl = null;
-    });
-
-
-    // for downloading the canvas
-    document.getElementById('ts-capture').addEventListener('click', () => {
-      html2canvas(document.querySelector("#ts-stone")).then(canvas => {
-        var tstone = canvas.toDataURL("image/png")
-        var elmDownload = document.getElementById("download-link");
-        var todate = new Date();
-        elmDownload.download = `tombstone-${todate.getDate()}${todate.getMonth()}${todate.getFullYear()}${todate.getHours()}${todate.getMinutes()}${todate.getMilliseconds()}.png`;
-        elmDownload.href = tstone;
-        elmDownload.click();
-        });
-    });
-</script>
+</div>

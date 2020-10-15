@@ -1,73 +1,94 @@
 // initialized all draggable elements
-dragAllElement(document.querySelectorAll(".ddable"));
-var parent = document.getElementById("ts-stone");
-var rect = parent.getBoundingClientRect();
-console.log(parent.offsetTop);
-
+window.onload = dragAllElement(document.querySelectorAll(".ddable"));
 
 function dragAllElement(elmnts) {
-    // console.log(elmnts);
-    var initX,
-        initY,
-        firstX,
-        firstY;
+  // console.log(elmnts);
+  var pos1 = 0,
+    pos2 = 0,
+    pos3 = 0,
+    pos4 = 0;
 
-    elmnts.forEach((elm) => {
-        elm.addEventListener("mousedown", function(e) {
+  elmnts.forEach((elm) => {
+    elm.addEventListener("mousedown", dragSingleElement);
 
-            e.preventDefault();
-            initX = this.offsetLeft;
-            initY = this.offsetTop;
-            firstX = e.pageX;
-            firstY = e.pageY;
+    // element.onmousedown = dragSingleElement;
 
-            // console.log(initX, initY)
-            // console.log(firstX, firstY)
+    // Focus on single draggable element
+    function dragSingleElement(e) {
+      // console.log(e);
+      e.preventDefault();
 
-            this.addEventListener("mousemove", dragY, false);
-            this.addEventListener("mousemove", dragX, false);
+      // select element to list out available properties for edit
+      edit(e);
 
-            window.addEventListener(
-                "mouseup",
-                function() {
-                    elm.removeEventListener("mousemove", dragY, false);
-                    elm.removeEventListener("mousemove", dragX, false);
-                },
-                false
-            );
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
 
-            function dragY(e) {
-                var objRect = elm.getBoundingClientRect();
-                // console.log(objRect.bottom)
-                if (elm.offsetTop < parent.offsetTop + 5) {
-                    elm.removeEventListener("mousemove", dragY, false);
-                    elm.style.top = `${parent.offsetTop+5}px`;
-                } else {
-                    elm.style.top = initY + e.pageY - firstY + "px";
-                }
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+    }
 
-                if (objRect.bottom > rect.bottom) {
-                    elm.removeEventListener("mousemove", dragY, false);
-                    elm.style.top = `${parent.offsetHeight + parent.offsetTop - elm.offsetHeight - 5}px`;
-                }
-            }
+    function elementDrag(e) {
+      e.preventDefault();
 
-            function dragX(e) {
-                var objRect = elm.getBoundingClientRect();
-                // if (elm.offsetLeft < 18) {
-                if (elm.offsetLeft < parent.offsetLeft + 5) {
-                    elm.removeEventListener("mousemove", dragX, false);
-                    elm.style.left = `${parent.offsetLeft + 5}px`;
-                } else {
-                    elm.style.left = initX + e.pageX - firstX + "px";
-                }
+      // calculate the new cursor position:
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
 
-                if (objRect.right > rect.right) {
-                    elm.style.left = `${parent.offsetWidth + parent.offsetLeft - elm.offsetWidth - 5}px`;
-                    elm.removeEventListener("mousemove", dragX, false);
-                }
-            }
+      // set the element's new position:
+      elm.style.top = elm.offsetTop - pos2 + "px";
+      elm.style.left = elm.offsetLeft - pos1 + "px";
 
-        }, false);
-    });
+      // restrict child position
+      // restrictChildElmnt();
+    }
+
+    function closeDragElement() {
+      // stop moving when mouse button is released:
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+
+    function restrictChildElmnt() {
+      if (
+        elm.offsetLeft > elm.parentElement.offsetLeft &&
+        elm.offsetTop > elm.parentElement.offsetTop &&
+        elm.offsetLeft + elm.offsetWidth <
+        elm.parentElement.offsetWidth + elm.parentElement.offsetLeft &&
+        elm.offsetTop + elm.offsetHeight <
+        elm.parentElement.offsetHeight + elm.parentElement.offsetTop
+      ) {
+        // console.log(
+        //   elm.parentElement.offsetLeft,
+        //   elm.parentElement.offsetTop,
+        //   elm.offsetLeft,
+        //   elm.offsetTop
+        // );
+        console.log("+++++++++++++++++++++++++++++++");
+        console.log(
+          `widthChild: ${elm.offsetWidth} widthParent: ${elm.parentElement.offsetWidth}`,
+          `heightChild: ${elm.offsetHeight} heightParent: ${elm.parentElement.offsetHeight}`
+        );
+
+        console.log("---------------------------");
+        console.log(`left: ${elm.offsetLeft}`, `top: ${elm.offsetTop}`);
+        console.log(
+          `childMaxWidth: ${elm.parentElement.offsetWidth +
+          elm.parentElement.offsetLeft -
+          elm.offsetWidth
+          }`,
+          `childMaxHeight: ${elm.parentElement.offsetHeight +
+          elm.parentElement.offsetTop -
+          elm.offsetHeight
+          }`
+        );
+      } else {
+        return false;
+      }
+    }
+  });
 }

@@ -42,11 +42,6 @@ class TombBase extends TombCore{
 
     // run a parent constructor
     public function __construct(){
-        // echo test;
-        // echo TGen\test;
-
-        // this is global
-        // new PDO();
         parent::__construct();
     }
     
