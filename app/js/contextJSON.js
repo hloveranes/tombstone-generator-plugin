@@ -2,7 +2,7 @@
 
 dataEl = [
   {
-    img: {
+    imgElmt: {
       borderColor: null,
       borderRadius: null,
       borderWidth: null,
@@ -18,5 +18,23 @@ dataEl = [
       width: null,
       zIndex: null,
     },
+    txtElmt: {
+      backgroundColor: null,
+      borderColor: null,
+      borderRadius: null,
+      borderWidth: null,
+      color: null,
+      fontFamily: null,
+      fontSize: null,
+      hPos: null,
+      left: null,
+      margin: null,
+      opacity: null,
+      padding: null,
+      textShadow: null,
+      top: null,
+      vPos: null,
+      zIndex: null,
+    }
   },
 ];

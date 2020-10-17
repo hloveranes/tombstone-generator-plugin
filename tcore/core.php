@@ -31,10 +31,21 @@ class TombCore {
     }
 
     public function tombstone_generator($tgen){
-        // $a = plugins_url().'/tombstone-generator';
-        // return $a;
         return require_once __DIR__.'/../app/index.php';
     }
 
+
+    // reserved for now
+    // not used 
+    // insert data to tombstone table
+    public function add_data_to_tombstone(){
+    }
+
+    // update tombstone table 
+    public function update_data_to_tombstone(){
+    }
+    // delete data in tombstone table
+    public function delete_data_to_tombstone(){
+    }
 }
 ?>

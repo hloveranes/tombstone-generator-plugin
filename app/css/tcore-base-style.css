@@ -1,7 +1,10 @@
+
 .ddable {
     position: absolute;
-    cursor: -webkit-grab;
     cursor: grab;
+    cursor: -webkit-grabbing;
+    cursor: -moz-grab;
+    
 }
 
 #canvas-parent{
@@ -15,10 +18,23 @@
 
 #tmplt-limit{
     height: 100vh;
-    max-height: 680px;
+    max-height: 720px;
     max-width: 920px;
     margin: 0 auto;
     padding: 50px;
+}
+#ts-canvas-frame{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    /* remove in production */
+    border: 0.5px solid black;
+    background-color: gray;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 1;
 }
 
 #ts-canvas-tmplt{
@@ -27,11 +43,9 @@
     width: 100%;
     height: 100%;
     background-size: cover;
-    /* remove in production */
-    border: 0.5px solid black;
-    background-color: gray;
     background-repeat: no-repeat;
     background-position: center center;
+    z-index: -1;
 }
 
 #tmplt-cmpnts{
@@ -51,6 +65,7 @@
 .cmpnts{
     display: grid;
     grid-template-columns: repeat(auto-fit, 150px);
+    grid-template-rows: 150px;
     justify-content: center;
 }
 
@@ -63,11 +78,21 @@
     border: 1px solid black;
 }
 
+/* selectable in the editor */
+.canvas-frame{
+    cursor: pointer !important;
+}
+.tmplt{
+    cursor: pointer !important;
+}
+.frm-cmpnts{
+    cursor: pointer !important;
+}
+
 .cmpnts div img{
     width: 100%;
     height: 100%;
 }
-
 
 
 
@@ -82,7 +107,9 @@
 
 /* Universal CSS */
 
-  
+html{
+    scroll-behavior: smooth;
+}
   
   
   

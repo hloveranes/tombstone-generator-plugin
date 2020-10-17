@@ -19,7 +19,7 @@ function dragAllElement(elmnts) {
       e.preventDefault();
 
       // select element to list out available properties for edit
-      edit(e);
+      generateInputs(e);
 
       // get the mouse cursor position at startup:
       pos3 = e.clientX;
