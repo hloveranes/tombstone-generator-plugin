@@ -51,20 +51,20 @@ function generateInputs(elm) {
           if(elmSelected == elmType){
 
             var elmKeys = Object.keys(elmList[elmSelected])
-              elmKeys.forEach((elm, index) => {
-                // console.log(elm, index)
+              elmKeys.forEach((item, index) => {
+                // console.log(item, index)
 
                 // create INPUT
                 newInput = document.createElement("INPUT");
                 newInput.setAttribute("type", "text");
-                newInput.setAttribute("id", `${elm}-${index}`);
-                newInput.setAttribute("name", `${elm}Field`);
+                newInput.setAttribute("id", `${item}-${index}`);
+                newInput.setAttribute("name", `${item}Field`);
                 newInput.classList.add("canvas-style");
                 
                 // create LABEL
                 newLabel = document.createElement("LABEL");
-                newLabel.setAttribute("for",`${elm}-${index}`);
-                newLabel.innerText = `${elm}`;
+                newLabel.setAttribute("for",`${item}-${index}`);
+                newLabel.innerText = `${item}`;
 
                 // create DIV
                 newDiv = document.createElement("DIV");
@@ -89,8 +89,23 @@ function getAllInputs(elInpts, elm){
   elInpts.forEach((elInpt) => {
     // console.log(elInpts)
     elInpt.addEventListener("input", (e)=>{
-      console.log(e.target.value);
-      console.log(elm.target);
+      // console.log(e.target.value);
+
+      // console.log(elm.target);
+      dataEl.forEach((elmList) => {
+          var elmTypeKeys = Object.keys(elmList)
+          elmTypeKeys.forEach((elmType) => {
+              var elmKeys = Object.keys(elmList[elmType])
+              elmKeys.forEach((item) => {
+                // console.log(item);
+                if(e.target.name == `${item}Field`){
+                  elm.target.style[item] = e.target.value;
+                  // console.log(e.target.name, `${item}Field`)
+                  // console.log(elm.target.style[item])
+                }
+              })
+          })
+      })
     });
   })
 }
