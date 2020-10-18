@@ -7,15 +7,18 @@
     
 }
 
+/* whole body part of tombstone generator */
 #canvas-parent{
     padding: 50px 0; 
     text-align: center !important; 
 }
 
+/* capture button */
 #cptr-contr{
     padding: 20px 20px 0px;
 }
 
+/* limit of the canvas */
 #tmplt-limit{
     height: 100vh;
     max-height: 720px;
@@ -23,6 +26,8 @@
     margin: 0 auto;
     padding: 50px;
 }
+
+/* material part */
 #ts-canvas-frame{
     padding: 0;
     margin: 0;
@@ -30,13 +35,14 @@
     height: 100%;
     /* remove in production */
     border: 0.5px solid black;
-    background-color: gray;
+    /* background-color: gray; */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     z-index: 1;
 }
 
+/* frame part */
 #ts-canvas-tmplt{
     padding: 0.2px;
     margin: 0 auto;
@@ -48,33 +54,41 @@
     z-index: -1;
 }
 
+/* editor part */
 #tmplt-cmpnts{
     /* remove in production */
-    border: 0.5px solid black;
+    /* border: 0.5px solid black; */
     width: 100%;
     /* height: 400px; */
     margin: 0px auto;
 }
 
-/* carousel */
 
+/* carousel */
 #ts-cmpnts{
     text-align: center;
 }
-
-.cmpnts{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 150px);
-    grid-template-rows: 150px;
-    justify-content: center;
+#ts-cmpnts button{
+    margin: 4px 2px;
 }
 
+
+
+/* distribute each component evenly*/
+.cmpnts{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 130px);
+    grid-template-rows: 130px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* contain components */
 .cmpnts div{
     text-align: center;
     width: 100%;
     height: 100%;
     margin: auto;
-    background-color: grey;
     border: 1px solid black;
 }
 
@@ -89,14 +103,35 @@
     cursor: pointer !important;
 }
 
+
+/* size the image to fit the div */
+/* 
+frame, material, decoration
+*/
 .cmpnts div img{
     width: 100%;
     height: 100%;
+    padding: 5px;
+}
+
+#tab-scripture .cmpnts div{
+    line-height: 28px;
 }
 
 
+/* Inputs Part */
+#components-inputs{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    justify-content: center;
+    text-align: left;
+}
 
-
+#components-inputs label{
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+}
 
 #add-elm{
     margin: auto;
@@ -105,12 +140,15 @@
 }
 
 
-/* Universal CSS */
 
+/* Universal CSS */
 html{
     scroll-behavior: smooth;
 }
   
+body{
+    background-color: #c7c7c7;
+}
   
   
   

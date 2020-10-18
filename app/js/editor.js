@@ -165,7 +165,7 @@ document.getElementById("create-elm").addEventListener("click", () => {
 // Download the current canvas
 document.getElementById("cptr").addEventListener("click", () => {
   setTimeout(() => { 
-    html2canvas(document.querySelector("#ts-canvas-frame")).then(canvas => {
+    html2canvas(document.querySelector("#ts-canvas-tmplt")).then(canvas => {
       var tstone = canvas.toDataURL("image/png")
       var elmDownload = document.getElementById("download-link");
       var todate = new Date();

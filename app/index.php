@@ -15,8 +15,8 @@
       <div id="tmplt-limit">
         <!-- element id must not be changed-->
         <!-- added elements will go here -->
-        <div id="ts-canvas-frame">
-          <div id="ts-canvas-tmplt">
+        <div id="ts-canvas-tmplt">
+          <div id="ts-canvas-frame">
 
 
           </div>
@@ -94,7 +94,7 @@
                         foreach ($scriptures as $scrpt) {
                           echo '<div>
                                   <span class="frm-cmpnts" style="'.$scrpt->scripture.'">
-                                    Sample Scripture
+                                  Scripture Scriptures Scripture Scriptures
                                   </span>
                                 </div>';
                         }
